@@ -125,7 +125,6 @@ class SimpleDB(object):
     def load_pending(self):
         with open(self.pending_transactions_log) as f:
             command_entries = [x.strip() for x in f.readlines()]
-            print(command_entries)
         print("Replaying pending transactions....")
         for command in command_entries:
             self.print_prompt()
@@ -286,7 +285,8 @@ class SimpleDB(object):
         self.pending_transactions.clear()
         self.pending_db.clear()
         # Get rid of the transaction file - all transactions committed.
-        os.remove(self.pending_transactions_log)
+        if os.path.exists(self.pending_transactions_log):
+            os.remove(self.pending_transactions_log)
 
     def display(self, parsed_command):
         if len(parsed_command) == 1:
