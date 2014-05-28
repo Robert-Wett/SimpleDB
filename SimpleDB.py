@@ -66,7 +66,7 @@ class Record(object):
 
 
 class SimpleDB(object):
-    def __init__(self: object):
+    def __init__(self, object):
         # Global file pointer that will be opened by load_main()
         self.fp = None
         self.main_db = {}
