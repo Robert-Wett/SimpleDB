@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Simpledb : Simple DB implementation in python with persistence and &#39;write-ahead&#39; logging..." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Simpledb</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/Robert-Wett/SimpleDB">View on GitHub</a>
+
+          <h1 id="project_title">Simpledb</h1>
+          <h2 id="project_tagline">Simple DB implementation in python with persistence and &#39;write-ahead&#39; logging...</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/Robert-Wett/SimpleDB/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/Robert-Wett/SimpleDB/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="simpledb" class="anchor" href="#simpledb"><span class="octicon octicon-link"></span></a>SimpleDB</h1>
+
+<p>A simple key/value DB implementation in python / Learning exercise</p>
+
+<h4>
+<a name="limitations" class="anchor" href="#limitations"><span class="octicon octicon-link"></span></a>Limitations</h4>
+
+<ul>
+<li>only accepts <code>int</code> type for values</li>
+<li>no concurrency</li>
+<li>limited command set</li>
+<li>lots of other stuffs</li>
+</ul><h4>
+<a name="things-i-tried-to-do" class="anchor" href="#things-i-tried-to-do"><span class="octicon octicon-link"></span></a>things I tried to do</h4>
+
+<ul>
+<li>All commands persisted to a simple <code>.sdb</code> file</li>
+<li>All commands issued within a transaction persisted to <code>pending.txt</code>
+
+<ul>
+<li>Simple write-ahead logging implementation</li>
+<li>Prompts user to re-load any pending transactions on program crash</li>
+</ul>
+</li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Simpledb maintained by <a href="https://github.com/Robert-Wett">Robert-Wett</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
