@@ -1,4 +1,4 @@
-__author__ = "Robert Wettlaufer (aka big tasty)"
+__author__ = "Robert Wettlaufer"
 
 
 import sys, os
