@@ -23,9 +23,9 @@ A simple key/value DB implementation in python / Learning exercise with persiste
 ####`Display` - Shows the currently committed values for all variables
 
 ##Somewhat Nifty - simple write-ahead-logging
-![WRITEAHEAD1](http://i.imgur.com/ND2GdBe.png)  
+![WRITEAHEAD1](http://i.imgur.com/3rJC1dQ.png)  
 
-![WRITEAHEAD2](http://i.imgur.com/vEzmag9.png)
+![WRITEAHEAD2](http://i.imgur.com/tv8Hwjx.png)  
 ####Limitations
  - only accepts `int` type for values
  - no concurrency
