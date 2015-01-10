@@ -7,8 +7,6 @@ A simple key/value DB implementation in python / Learning exercise with persiste
 ####`GET <name>` - Get current value for a variable. Note that the context of the value for the variable is dependent on the transaction scope.
 ![GET](http://i.imgur.com/FznLvVP.png)
 ####`UNSET` - Delete the variable and it's value from the database completely.
-	 * `UNSET myVar`
-	 * `GET myVar` => `NULL`
 ![UNSET](http://i.imgur.com/FBzW2tz.png)
 ####`NUMEQUALTO <value>` - Get the current number of variables that are set to `value`
 ![NUMEQUALTO](http://i.imgur.com/19pRYZn.png)
