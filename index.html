@@ -1,51 +1,110 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Simpledb : Simple DB implementation in python with persistence and &#39;write-ahead&#39; logging..." />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Simpledb by Robert-Wett</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <title>Simpledb</title>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/Robert-Wett/SimpleDB">View on GitHub</a>
-
-          <h1 id="project_title">Simpledb</h1>
-          <h2 id="project_tagline">Simple DB implementation in python with persistence and &#39;write-ahead&#39; logging...</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/Robert-Wett/SimpleDB/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/Robert-Wett/SimpleDB/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+    <div class="wrapper">
+      <header>
+        <h1>Simpledb</h1>
+        <p>Simple DB implementation in python with persistence and &#39;write-ahead&#39; logging...</p>
+        <p class="view"><a href="https://github.com/Robert-Wett/SimpleDB">View the Project on GitHub <small>Robert-Wett/SimpleDB</small></a></p>
+        <ul>
+          <li><a href="https://github.com/Robert-Wett/SimpleDB/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/Robert-Wett/SimpleDB/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/Robert-Wett/SimpleDB">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
         <h1>
-<a name="simpledb" class="anchor" href="#simpledb"><span class="octicon octicon-link"></span></a>SimpleDB</h1>
+<a id="simpledb" class="anchor" href="#simpledb" aria-hidden="true"><span class="octicon octicon-link"></span></a>SimpleDB</h1>
 
-<p>A simple key/value DB implementation in python / Learning exercise</p>
+<p>A simple key/value DB implementation in python / Learning exercise with persistence and write-ahead-logging.</p>
+
+<h2>
+<a id="command-set--api" class="anchor" href="#command-set--api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Command Set / API</h2>
 
 <h4>
-<a name="limitations" class="anchor" href="#limitations"><span class="octicon octicon-link"></span></a>Limitations</h4>
+<a id="set-name-value--set-the-variable-name-to-the-value-value-neither-variable-names-nor-values-can-contain-spaces" class="anchor" href="#set-name-value--set-the-variable-name-to-the-value-value-neither-variable-names-nor-values-can-contain-spaces" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<code>SET &lt;name&gt; &lt;value&gt;</code>- Set the variable <code>name</code> to the value <code>value</code>. Neither variable names nor values can contain spaces.</h4>
+
+<p><img src="http://i.imgur.com/CXD43nR.png" alt="SET"></p>
+
+<h4>
+<a id="get-name---get-current-value-for-a-variable-note-that-the-context-of-the-value-for-the-variable-is-dependent-on-the-transaction-scope" class="anchor" href="#get-name---get-current-value-for-a-variable-note-that-the-context-of-the-value-for-the-variable-is-dependent-on-the-transaction-scope" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<code>GET &lt;name&gt;</code> - Get current value for a variable. Note that the context of the value for the variable is dependent on the transaction scope.</h4>
+
+<p><img src="http://i.imgur.com/FznLvVP.png" alt="GET"></p>
+
+<h4>
+<a id="unset---delete-the-variable-and-its-value-from-the-database-completely" class="anchor" href="#unset---delete-the-variable-and-its-value-from-the-database-completely" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<code>UNSET</code> - Delete the variable and it's value from the database completely.</h4>
+
+<p><img src="http://i.imgur.com/FBzW2tz.png" alt="UNSET"></p>
+
+<h4>
+<a id="numequalto-value---get-the-current-number-of-variables-that-are-set-to-value" class="anchor" href="#numequalto-value---get-the-current-number-of-variables-that-are-set-to-value" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<code>NUMEQUALTO &lt;value&gt;</code> - Get the current number of variables that are set to <code>value</code>
+</h4>
+
+<p><img src="http://i.imgur.com/19pRYZn.png" alt="NUMEQUALTO"></p>
+
+<h4>
+<a id="begin---start-a-transaction-that-will-only-be-written-to-the-database-if-issued-the-commit-command-variables-within-a-transaction-will-shadow-their-corresponding-variables-in-the-parent-scope-in-the-case-of-an-exit-or-crash-every-command-that-is-issued-within-a-begin-clause-will-be-persisted-to-the-pendingtxt-file-to-be-replayed-if-wanted-successive-transactions-are-indented-to-better-display-the-depth" class="anchor" href="#begin---start-a-transaction-that-will-only-be-written-to-the-database-if-issued-the-commit-command-variables-within-a-transaction-will-shadow-their-corresponding-variables-in-the-parent-scope-in-the-case-of-an-exit-or-crash-every-command-that-is-issued-within-a-begin-clause-will-be-persisted-to-the-pendingtxt-file-to-be-replayed-if-wanted-successive-transactions-are-indented-to-better-display-the-depth" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<code>BEGIN</code> - Start a transaction that will only be written to the database if issued the <code>COMMIT</code> command. Variables within a transaction will shadow their corresponding variables in the parent scope. In the case of an exit or crash, every command that is issued within a <code>BEGIN</code> clause will be persisted to the <code>pending.txt</code> file to be replayed if wanted. Successive transactions are indented to better display the depth.</h4>
+
+<p><img src="http://i.imgur.com/RQqZm7X.png" alt="BEGIN1">  </p>
+
+<p><img src="http://i.imgur.com/uBrUmWj.png" alt="BEGIN2">  </p>
+
+<h4>
+<a id="commit-save-the-currently-set-variables-to-database-note-that-when-issuing-this-command-it-will-commit-the-values-of-the-last-transaction-currently-in" class="anchor" href="#commit-save-the-currently-set-variables-to-database-note-that-when-issuing-this-command-it-will-commit-the-values-of-the-last-transaction-currently-in" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<code>COMMIT</code>-Save the currently set variables to database. Note that when issuing this command, it will commit the values of the <strong>last</strong> transaction currently in.</h4>
+
+<p><img src="http://i.imgur.com/dJJWlYR.png" alt="COMMIT"></p>
+
+<h4>
+<a id="rollback---discard-current-transaction-and-rollback-to-previously-defined-values-in-the-parent-transaction" class="anchor" href="#rollback---discard-current-transaction-and-rollback-to-previously-defined-values-in-the-parent-transaction" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<code>ROLLBACK</code> - Discard current transaction and rollback to previously defined values in the parent transaction.</h4>
+
+<p><img src="http://i.imgur.com/diwXBCv.png" alt="ROLLBACK1">  </p>
+
+<p><img src="http://i.imgur.com/0hgZtfL.png" alt="ROLLBACK2"></p>
+
+<h4>
+<a id="display---shows-the-currently-committed-values-for-all-variables" class="anchor" href="#display---shows-the-currently-committed-values-for-all-variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<code>Display</code> - Shows the currently committed values for all variables</h4>
+
+<h2>
+<a id="somewhat-nifty---simple-write-ahead-logging" class="anchor" href="#somewhat-nifty---simple-write-ahead-logging" aria-hidden="true"><span class="octicon octicon-link"></span></a>Somewhat Nifty - simple write-ahead-logging</h2>
+
+<p><img src="http://i.imgur.com/3rJC1dQ.png" alt="WRITEAHEAD1">  </p>
+
+<p><img src="http://i.imgur.com/tv8Hwjx.png" alt="WRITEAHEAD2">  </p>
+
+<h4>
+<a id="limitations" class="anchor" href="#limitations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Limitations</h4>
 
 <ul>
 <li>only accepts <code>int</code> type for values</li>
 <li>no concurrency</li>
 <li>limited command set</li>
 <li>lots of other stuffs</li>
-</ul><h4>
-<a name="things-i-tried-to-do" class="anchor" href="#things-i-tried-to-do"><span class="octicon octicon-link"></span></a>things I tried to do</h4>
+</ul>
+
+<h4>
+<a id="things-i-tried-to-do" class="anchor" href="#things-i-tried-to-do" aria-hidden="true"><span class="octicon octicon-link"></span></a>things I tried to do</h4>
 
 <ul>
 <li>All commands persisted to a simple <code>.sdb</code> file</li>
@@ -57,18 +116,15 @@
 </ul>
 </li>
 </ul>
+
+<h1></h1>
       </section>
     </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Simpledb maintained by <a href="https://github.com/Robert-Wett">Robert-Wett</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
+    <footer>
+      <p>Project maintained by <a href="https://github.com/Robert-Wett">Robert-Wett</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
-
   </body>
 </html>
