@@ -13,17 +13,20 @@ A simple key/value DB implementation in python / Learning exercise with persiste
 ####`NUMEQUALTO <value>` - Get the current number of variables that are set to `value`
 ![NUMEQUALTO](http://i.imgur.com/19pRYZn.png)
 ####`BEGIN` - Start a transaction that will only be written to the database if issued the `COMMIT` command. Variables within a transaction will shadow their corresponding variables in the parent scope. In the case of an exit or crash, every command that is issued within a `BEGIN` clause will be persisted to the `pending.txt` file to be replayed if wanted. Successive transactions are indented to better display the depth.
-![BEGIN1](http://i.imgur.com/RQqZm7X.png)
-![BEGIN2](http://i.imgur.com/uBrUmWj.png)
+![BEGIN1](http://i.imgur.com/RQqZm7X.png)  
+
+![BEGIN2](http://i.imgur.com/uBrUmWj.png)  
 ####`COMMIT`-Save the currently set variables to database. Note that when issuing this command, it will commit the values of the **last** transaction currently in.
 ![COMMIT](http://i.imgur.com/dJJWlYR.png)
 ####`ROLLBACK` - Discard current transaction and rollback to previously defined values in the parent transaction.
-![ROLLBACK1](http://i.imgur.com/diwXBCv.png)
+![ROLLBACK1](http://i.imgur.com/diwXBCv.png)  
+
 ![ROLLBACK2](http://i.imgur.com/0hgZtfL.png)
 ####`Display` - Shows the currently committed values for all variables
 
 ##Somewhat Nifty - simple write-ahead-logging
-![WRITEAHEAD1](http://i.imgur.com/ND2GdBe.png)
+![WRITEAHEAD1](http://i.imgur.com/ND2GdBe.png)  
+
 ![WRITEAHEAD2](http://i.imgur.com/vEzmag9.png)
 ####Limitations
  - only accepts `int` type for values
