@@ -1,5 +1,6 @@
 # SimpleDB
-========
+
+
 A simple key/value DB implementation in python / Learning exercise with persistence and write-ahead-logging.
 ## Command Set / API
 #### `SET <name> <value>`- Set the variable `name` to the value `value`. Neither variable names nor values can contain spaces.  
